@@ -12,7 +12,7 @@ The use case I had in mind creating this was shooting my kid on a stage at a yea
 
 So, most importantly, I don't want to compromise Nikon's shooting ergonomics, and especially don't want to be shooting from a laptop. I want the viewfinder up to my eye and my hands on the buttons. That's where the MC-N10 remote grip comes in. It's an excellent accessory and I recommend that any Nikon Z-system user that shoots a lot of video to pick one up. I noticed it uses the USB-C connection to the camera in MTP/PTP mode, and wondered if I could use that for my system while keeping the user controls on the camera active. This project is the end result of that experimentation.
 
-After using [Ataradov USB sniffer](https://github.com/ataradov/usb-sniffer) to grab the USB packets sent between the Camera and the MC-N10, I used ChatGPT to start building this, then finished it off with Claude Code.
+After using [Ataradov USB sniffer](https://github.com/ataradov/usb-sniffer) to grab the USB packets sent between the Camera and the MC-N10, I used ChatGPT to start building this, then finished it off with Claude Code. The reverse-engineered MC-N10 protocol is now a separate library (https://github.com/jerich/nikon-usb-control).
 
 The current version uses pretraining to detect a target face. I trained it on folder of 100+ images in a variety of settings and conditions and the face recognition works quite well. Analysis of the Nikon AF UI elements seems to be working, and the USB control can send the correct steering commands to the camera. It needs more testing, but it works as a proof of concept.
 
@@ -22,7 +22,7 @@ Actually, wifi would be best, because that would allow all of this to take place
 
 An autofocus helper loop like this could be a major differentiator for any of the major camera companies. The intent is not to replace the camera’s autofocus system, but to expose it to external software, AI or otherwise, to interact with the camera as a user does, operating alongside the user in real time. Interchageable lens cameras are long life products; they're never going to be on a yearly release cycle and their internal processing will always lag behind the latest iPhone or something like the Nvidia Jetson. Opening up a processing loop around an already excellent AF system would enable faster innovation and make existing cameras better year after year.
 
-Imagine a future version with an LLM running alongside the camera: "Stay focused on the player in jersey 77" or "Focus on the woman in the green dress" or even "Focus on James during his solo." I can picture an app with AF recipes, just like Nikon's picture control recipes in the Nikon Image Space app right now. Or even extend it to shutter control: "Start one second of burst shooting when the squirrel grabs the peanut." It can be done with the Nikon hardware that's out there today; it just needs a small change to the camera mode and a new API.
+Imagine a future version with an LLM running alongside the camera: "Stay focused on the player in jersey 77" or "Focus on the woman in the green dress" or even "Focus on James during his solo." I can picture an app with AF recipes, just like Nikon's picture control recipes today. Or even extend it to shutter control: "Start one second of burst shooting when the squirrel grabs the peanut." It can be done with the Nikon hardware that's out there today; it just needs a small change to the camera mode and a new API.
 
 ## Features
 
